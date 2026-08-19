@@ -1,0 +1,76 @@
+# ============================================================
+# Compact AI Systems for Industrial Diagnostics
+# Experimental Python dependencies
+# ============================================================
+#
+# The versions explicitly pinned below correspond to the
+# experimental SLM notebooks used in the study.
+#
+# Some packages were provided by the Google Colab runtime and
+# were not explicitly version-pinned in the original notebooks.
+# Those packages are therefore listed without a fixed version.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Core data processing
+# ------------------------------------------------------------
+
+pandas==2.2.2
+numpy
+tqdm
+
+
+# ------------------------------------------------------------
+# Deep learning and computer vision
+# ------------------------------------------------------------
+
+torch
+torchvision
+
+
+# ------------------------------------------------------------
+# Hugging Face / Small Language Models
+# ------------------------------------------------------------
+
+transformers==4.45.2
+accelerate==0.34.2
+bitsandbytes==0.49.2
+huggingface_hub
+sentencepiece
+
+
+# ------------------------------------------------------------
+# Retrieval-Augmented Generation
+# ------------------------------------------------------------
+
+sentence-transformers==3.1.1
+faiss-cpu
+
+
+# ------------------------------------------------------------
+# Text-generation evaluation
+# ------------------------------------------------------------
+
+evaluate==0.4.3
+rouge-score==0.1.2
+nltk==3.9.1
+scikit-learn==1.5.2
+
+bert-score
+sacrebleu
+
+
+# ------------------------------------------------------------
+# Statistical analysis
+# ------------------------------------------------------------
+
+scipy
+statsmodels
+
+
+# ------------------------------------------------------------
+# Visualization
+# ------------------------------------------------------------
+
+matplotlib
