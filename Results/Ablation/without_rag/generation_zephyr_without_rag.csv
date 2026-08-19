@@ -1,0 +1,306 @@
+sample_id,true_class,predicted_class,confidence,observed_evidence,cnn_source_row,selection_rule,model_key,model_name,model_label,loading_mode,condition,use_rag,prompt,prompt_sha256,report,valid_report,latency_seconds,input_tokens,raw_input_tokens,output_tokens,peak_vram_gb,seed,finish_reason,ended_with_eos,reached_token_limit,was_truncated,input_was_truncated
+holdout_row_0,Bearing_Failure,Bearing_Failure,0.7387608,,0,correct_prediction_closest_to_class_median_confidence,zephyr,HuggingFaceH4/zephyr-7b-beta,Zephyr-7B-Beta-4bit,4bit_nf4,without_rag,False,"You are an industrial maintenance specialist in induction motor fault diagnosis using infrared thermography.
+
+CNN prediction:
+- Predicted fault: Bearing_Failure
+- Confidence: 0.739
+
+Observed evidence:
+No textual thermal evidence was produced by the CNN; only the predicted class and confidence are available.
+
+No external technical context is available in this condition.
+
+Generate ONE concise technical diagnostic report in English using your internal parametric knowledge.
+
+The report MUST contain EXACTLY the following five sections:
+
+1. Technical diagnosis
+2. Supporting evidence
+3. Probable causes
+4. Recommended maintenance actions
+5. Severity and risk assessment
+
+Mandatory rules:
+
+- Use the CNN prediction as the confirmed diagnostic input.
+- Clearly distinguish confirmed information from probable causes.
+- Never invent measurements, temperatures, standards, inspections, citations, or observed evidence.
+- Do not claim access to retrieved documents or external technical knowledge.
+- Do not state that the CNN observed textual thermal patterns unless explicitly provided.
+- Write exactly five sections using ONLY the headings above.
+- Use no more than THREE short sentences per section.
+- Keep the entire report between approximately 180 and 300 words.
+- Do NOT add introductions, conclusions, notes, bullet lists, or extra sections.
+- Do NOT repeat information across sections.
+- Finish immediately after Section 5 with a complete sentence.
+
+Produce only the report.",7c92911b76b54062d5b7fb7b06bc334ee6109d8c134e20d4cf349a2f4537cf75,"Technical Diagnosis:
+Based on the CNN prediction, bearing failure is confirmed. The CNN's confidence level of 0.739 indicates a high probability of this fault.
+
+Supporting Evidence:
+No textual thermal evidence was provided by the CNN.
+
+Probable Causes:
+1. Worn bearings due to excessive usage or lack of lubrication.
+2. Contamination of the bearing system, leading to premature wear.
+3. Misalignment of the rotor and stator, causing increased vibration and bearing damage.
+
+Recommended Maintenance Actions:
+1. Regularly inspect and replace bearings at recommended intervals based on manufacturer guidelines.
+2. Implement a thorough cleaning process for the bearing system to prevent contamination.
+3. Ensure proper alignment of the rotor and stator through regular maintenance and adjustments.
+
+Severity and Risk Assessment:
+Bearing failure can result in significant downtime and repair costs. The severity of this fault is high, as it can lead to equipment failure and potential safety hazards. The risk of this fault occurring can be mitigated through regular maintenance and monitoring, but it remains a significant threat to equipment reliability. Immediate action should be taken upon confirmation of this fault to minimize its impact.",True,24.648068015999797,349,349,280,4.033,42,eos_token,True,False,False,False
+holdout_row_1,Blocked_Rotor,Blocked_Rotor,0.5802854,,1,correct_prediction_closest_to_class_median_confidence,zephyr,HuggingFaceH4/zephyr-7b-beta,Zephyr-7B-Beta-4bit,4bit_nf4,without_rag,False,"You are an industrial maintenance specialist in induction motor fault diagnosis using infrared thermography.
+
+CNN prediction:
+- Predicted fault: Blocked_Rotor
+- Confidence: 0.580
+
+Observed evidence:
+No textual thermal evidence was produced by the CNN; only the predicted class and confidence are available.
+
+No external technical context is available in this condition.
+
+Generate ONE concise technical diagnostic report in English using your internal parametric knowledge.
+
+The report MUST contain EXACTLY the following five sections:
+
+1. Technical diagnosis
+2. Supporting evidence
+3. Probable causes
+4. Recommended maintenance actions
+5. Severity and risk assessment
+
+Mandatory rules:
+
+- Use the CNN prediction as the confirmed diagnostic input.
+- Clearly distinguish confirmed information from probable causes.
+- Never invent measurements, temperatures, standards, inspections, citations, or observed evidence.
+- Do not claim access to retrieved documents or external technical knowledge.
+- Do not state that the CNN observed textual thermal patterns unless explicitly provided.
+- Write exactly five sections using ONLY the headings above.
+- Use no more than THREE short sentences per section.
+- Keep the entire report between approximately 180 and 300 words.
+- Do NOT add introductions, conclusions, notes, bullet lists, or extra sections.
+- Do NOT repeat information across sections.
+- Finish immediately after Section 5 with a complete sentence.
+
+Produce only the report.",8d6e9b552753c8b74bde57d868ae12a91d7218b16502748b825dae374cbf76e2,"1. Technical Diagnosis: Based on the CNN prediction, the induction motor has a Blocked Rotor fault. No textual thermal evidence was provided, but the CNN's confidence level of 0.580 indicates a moderate probability of this fault.
+
+2. Supporting Evidence: The CNN's prediction is the sole evidence supporting this diagnosis.
+
+3. Probable Causes: A blocked rotor occurs when there is an obstruction preventing the rotor from turning freely. This could be caused by debris, misaligned shafts, or damaged bearings.
+
+4. Recommended Maintenance Actions: Inspect the rotor for any signs of damage or obstructions. Check the bearings for wear and replace if necessary. Clean out any debris that may be causing the blockage.
+
+5. Severity and Risk Assessment: A blocked rotor can cause overheating, vibration, and reduced efficiency in the motor. If left unaddressed, it could lead to further damage and eventual failure of the motor. The severity and risk level depend on the specific application and consequences of downtime, but urgent action should be taken to address this issue.",True,21.697491536999905,350,350,253,4.033,43,eos_token,True,False,False,False
+holdout_row_2,Lack_of_Phase,Lack_of_Phase,0.7551909,,2,correct_prediction_closest_to_class_median_confidence,zephyr,HuggingFaceH4/zephyr-7b-beta,Zephyr-7B-Beta-4bit,4bit_nf4,without_rag,False,"You are an industrial maintenance specialist in induction motor fault diagnosis using infrared thermography.
+
+CNN prediction:
+- Predicted fault: Lack_of_Phase
+- Confidence: 0.755
+
+Observed evidence:
+No textual thermal evidence was produced by the CNN; only the predicted class and confidence are available.
+
+No external technical context is available in this condition.
+
+Generate ONE concise technical diagnostic report in English using your internal parametric knowledge.
+
+The report MUST contain EXACTLY the following five sections:
+
+1. Technical diagnosis
+2. Supporting evidence
+3. Probable causes
+4. Recommended maintenance actions
+5. Severity and risk assessment
+
+Mandatory rules:
+
+- Use the CNN prediction as the confirmed diagnostic input.
+- Clearly distinguish confirmed information from probable causes.
+- Never invent measurements, temperatures, standards, inspections, citations, or observed evidence.
+- Do not claim access to retrieved documents or external technical knowledge.
+- Do not state that the CNN observed textual thermal patterns unless explicitly provided.
+- Write exactly five sections using ONLY the headings above.
+- Use no more than THREE short sentences per section.
+- Keep the entire report between approximately 180 and 300 words.
+- Do NOT add introductions, conclusions, notes, bullet lists, or extra sections.
+- Do NOT repeat information across sections.
+- Finish immediately after Section 5 with a complete sentence.
+
+Produce only the report.",8a826e057be0fcc1feb0905afb367ce661b251fd6081d92ad29e52ef1048552b,"Technical Diagnosis:
+Based on the CNN prediction, it is diagnosed that the motor is experiencing a lack of phase fault.
+
+Supporting Evidence:
+No supporting thermal evidence is available from the CNN prediction.
+
+Probable Causes:
+1. Phase failure due to open circuits, blown fuses, or tripped circuit breakers.
+2. Loose connections in the power supply or motor terminals.
+3. Damaged windings or insulation resulting in resistance imbalances.
+
+Recommended Maintenance Actions:
+1. Check all power supply and motor terminal connections for tightness and continuity.
+2. Inspect the windings and insulation for damage and replace if necessary.
+3. Test the power supply and circuit breakers for functionality.
+
+Severity and Risk Assessment:
+This fault can result in reduced motor efficiency, increased vibration, and overheating, which may lead to further damage and potential equipment failure. The severity level is moderate, and the risk level is high due to the potential for unexpected shutdowns and safety hazards. Immediate action is recommended to prevent further damage and minimize downtime.",True,22.017545387999917,351,351,252,4.033,44,eos_token,True,False,False,False
+holdout_row_3,Normal Operation,Normal Operation,0.8029629,,3,correct_prediction_closest_to_class_median_confidence,zephyr,HuggingFaceH4/zephyr-7b-beta,Zephyr-7B-Beta-4bit,4bit_nf4,without_rag,False,"You are an industrial maintenance specialist in induction motor fault diagnosis using infrared thermography.
+
+CNN prediction:
+- Predicted fault: Normal Operation
+- Confidence: 0.803
+
+Observed evidence:
+No textual thermal evidence was produced by the CNN; only the predicted class and confidence are available.
+
+No external technical context is available in this condition.
+
+Generate ONE concise technical diagnostic report in English using your internal parametric knowledge.
+
+The report MUST contain EXACTLY the following five sections:
+
+1. Technical diagnosis
+2. Supporting evidence
+3. Probable causes
+4. Recommended maintenance actions
+5. Severity and risk assessment
+
+Mandatory rules:
+
+- Use the CNN prediction as the confirmed diagnostic input.
+- Clearly distinguish confirmed information from probable causes.
+- Never invent measurements, temperatures, standards, inspections, citations, or observed evidence.
+- Do not claim access to retrieved documents or external technical knowledge.
+- Do not state that the CNN observed textual thermal patterns unless explicitly provided.
+- Write exactly five sections using ONLY the headings above.
+- Use no more than THREE short sentences per section.
+- Keep the entire report between approximately 180 and 300 words.
+- Do NOT add introductions, conclusions, notes, bullet lists, or extra sections.
+- Do NOT repeat information across sections.
+- Finish immediately after Section 5 with a complete sentence.
+
+Produce only the report.",8cf65797d87c83e9e12cbe7b14a0e84d5f234b4458c5cee58f71228b3b2fa2e8,"Technical Diagnosis:
+Based on the CNN prediction, the motor is operating normally.
+
+Supporting Evidence:
+No thermal evidence was provided by the CNN.
+
+Probable Causes:
+Without thermal evidence, it is impossible to determine probable causes of any faults.
+
+Recommended Maintenance Actions:
+Regular preventative maintenance should be performed according to manufacturer's recommendations to ensure continued normal operation.
+
+Severity and Risk Assessment:
+As the motor is currently operating normally, there is no immediate severity or risk. However, failure to perform regular preventative maintenance could lead to unforeseen issues in the future. It is recommended to prioritize maintenance based on the motor's age, usage, and history of failures.",True,15.165415554999981,347,347,165,4.033,45,eos_token,True,False,False,False
+holdout_row_4,Overheating,Overheating,0.79239434,,4,correct_prediction_closest_to_class_median_confidence,zephyr,HuggingFaceH4/zephyr-7b-beta,Zephyr-7B-Beta-4bit,4bit_nf4,without_rag,False,"You are an industrial maintenance specialist in induction motor fault diagnosis using infrared thermography.
+
+CNN prediction:
+- Predicted fault: Overheating
+- Confidence: 0.792
+
+Observed evidence:
+No textual thermal evidence was produced by the CNN; only the predicted class and confidence are available.
+
+No external technical context is available in this condition.
+
+Generate ONE concise technical diagnostic report in English using your internal parametric knowledge.
+
+The report MUST contain EXACTLY the following five sections:
+
+1. Technical diagnosis
+2. Supporting evidence
+3. Probable causes
+4. Recommended maintenance actions
+5. Severity and risk assessment
+
+Mandatory rules:
+
+- Use the CNN prediction as the confirmed diagnostic input.
+- Clearly distinguish confirmed information from probable causes.
+- Never invent measurements, temperatures, standards, inspections, citations, or observed evidence.
+- Do not claim access to retrieved documents or external technical knowledge.
+- Do not state that the CNN observed textual thermal patterns unless explicitly provided.
+- Write exactly five sections using ONLY the headings above.
+- Use no more than THREE short sentences per section.
+- Keep the entire report between approximately 180 and 300 words.
+- Do NOT add introductions, conclusions, notes, bullet lists, or extra sections.
+- Do NOT repeat information across sections.
+- Finish immediately after Section 5 with a complete sentence.
+
+Produce only the report.",9fd18faf99151e4d891475fc1398ca398e45bc17f5644f02e7a26d9b4715353a,"Technical Diagnosis:
+Based on the CNN prediction, it is confirmed that the induction motor is experiencing overheating.
+
+Supporting Evidence:
+No supporting thermal evidence is provided by the CNN.
+
+Probable Causes:
+1. High ambient temperature causing increased motor case temperature.
+2. Faulty bearings leading to excessive friction and heat generation.
+3. Insufficient cooling due to dirty air filters or blocked vents.
+
+Recommended Maintenance Actions:
+1. Monitor ambient temperature and implement measures to reduce it if necessary.
+2. Inspect bearings for wear and replace if damaged.
+3. Clean air filters and check ventilation system for blockages.
+
+Severity and Risk Assessment:
+Overheating can lead to permanent damage to the motor windings and insulation, potentially resulting in costly repairs or replacements. The severity of this issue is high, and the risk of failure increases with prolonged overheating. Urgent action is required to prevent further damage.",True,20.55368622800006,348,348,228,4.033,46,eos_token,True,False,False,False
+holdout_row_5,Ventilation_Defect,Ventilation_Defect,0.89369124,,5,correct_prediction_closest_to_class_median_confidence,zephyr,HuggingFaceH4/zephyr-7b-beta,Zephyr-7B-Beta-4bit,4bit_nf4,without_rag,False,"You are an industrial maintenance specialist in induction motor fault diagnosis using infrared thermography.
+
+CNN prediction:
+- Predicted fault: Ventilation_Defect
+- Confidence: 0.894
+
+Observed evidence:
+No textual thermal evidence was produced by the CNN; only the predicted class and confidence are available.
+
+No external technical context is available in this condition.
+
+Generate ONE concise technical diagnostic report in English using your internal parametric knowledge.
+
+The report MUST contain EXACTLY the following five sections:
+
+1. Technical diagnosis
+2. Supporting evidence
+3. Probable causes
+4. Recommended maintenance actions
+5. Severity and risk assessment
+
+Mandatory rules:
+
+- Use the CNN prediction as the confirmed diagnostic input.
+- Clearly distinguish confirmed information from probable causes.
+- Never invent measurements, temperatures, standards, inspections, citations, or observed evidence.
+- Do not claim access to retrieved documents or external technical knowledge.
+- Do not state that the CNN observed textual thermal patterns unless explicitly provided.
+- Write exactly five sections using ONLY the headings above.
+- Use no more than THREE short sentences per section.
+- Keep the entire report between approximately 180 and 300 words.
+- Do NOT add introductions, conclusions, notes, bullet lists, or extra sections.
+- Do NOT repeat information across sections.
+- Finish immediately after Section 5 with a complete sentence.
+
+Produce only the report.",3943024b1d3147470b576996adaefe71232ae1b3b28209ea8e94e68bceac7617,"Technical Diagnosis:
+Based on the CNN prediction, it is confirmed that there is a ventilation defect present in the induction motor. The CNN's confidence level of 0.894 indicates a high degree of accuracy in this diagnosis.
+
+Supporting Evidence:
+Unfortunately, no external technical context or textual thermal evidence is available to support this diagnosis.
+
+Probable Causes:
+1. Clogged air filters: Dirt and debris can accumulate in air filters, restricting airflow and causing overheating in the motor.
+2. Damaged bearings: Worn or damaged bearings can cause excessive friction and heat generation, leading to ventilation issues.
+3. Faulty fan blades: Bent or broken fan blades can impede airflow, resulting in poor ventilation and increased temperatures.
+
+Recommended Maintenance Actions:
+1. Clean or replace air filters regularly to ensure proper airflow.
+2. Inspect bearings for signs of wear or damage and replace if necessary.
+3. Check fan blades for any damage and repair or replace as needed.
+
+Severity and Risk Assessment:
+The severity of this issue depends on the extent of the ventilation defect. If left unaddressed, it could lead to further damage to the motor, potentially resulting in costly repairs or replacements. The risk assessment is moderate, as the defect may not necessarily result in immediate failure but should be addressed promptly to prevent escalation.",True,28.263546374000043,350,350,325,4.033,47,eos_token,True,False,False,False

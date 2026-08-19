@@ -1,0 +1,116 @@
+{
+  "experiment_version": "without_rag_inference_all_models_v2",
+  "condition": "without_rag",
+  "models": [
+    "tinyllama",
+    "qwen",
+    "mistral",
+    "zephyr"
+  ],
+  "global_config": {
+    "experiment_version": "without_rag_inference_all_models_v2",
+    "cnn_predictions_path": "/content/holdout_test_predictions.csv",
+    "results_dir": "/content/results_without_rag",
+    "max_input_tokens": 1280,
+    "max_new_tokens": 700,
+    "do_sample": true,
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "top_k": null,
+    "repetition_penalty": 1.1,
+    "base_seed": 42,
+    "minimum_report_chars": 120,
+    "fail_on_truncation": true
+  },
+  "model_profiles": {
+    "mistral": {
+      "model_name": "mistralai/Mistral-7B-Instruct-v0.2",
+      "model_label": "Mistral-7B-Instruct-v0.2",
+      "loading_mode": "4bit_nf4",
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_compute_dtype": "float16",
+      "bnb_4bit_use_double_quant": false,
+      "torch_dtype": "float16",
+      "trust_remote_code": false,
+      "use_fast_tokenizer": true,
+      "padding_side": null,
+      "invalid_rules": "mistral"
+    },
+    "qwen": {
+      "model_name": "Qwen/Qwen2.5-3B-Instruct",
+      "model_label": "Qwen2.5-3B-Instruct-FP16",
+      "loading_mode": "fp16",
+      "load_in_4bit": false,
+      "torch_dtype": "float16",
+      "trust_remote_code": true,
+      "use_fast_tokenizer": true,
+      "padding_side": null,
+      "invalid_rules": "qwen"
+    },
+    "tinyllama": {
+      "model_name": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "model_label": "TinyLlama-1.1B-Chat-v1.0-FP16",
+      "loading_mode": "fp16",
+      "load_in_4bit": false,
+      "torch_dtype": "float16",
+      "trust_remote_code": false,
+      "use_fast_tokenizer": true,
+      "padding_side": "left",
+      "invalid_rules": "tinyllama"
+    },
+    "zephyr": {
+      "model_name": "HuggingFaceH4/zephyr-7b-beta",
+      "model_label": "Zephyr-7B-Beta-4bit",
+      "loading_mode": "4bit_nf4",
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_compute_dtype": "float16",
+      "bnb_4bit_use_double_quant": true,
+      "torch_dtype": "float16",
+      "trust_remote_code": false,
+      "use_fast_tokenizer": true,
+      "padding_side": null,
+      "invalid_rules": "generic"
+    }
+  },
+  "environment": {
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128",
+    "transformers": "4.45.2",
+    "cuda_available": true,
+    "gpu": "Tesla T4"
+  },
+  "selected_cases": [
+    {
+      "sample_id": "holdout_row_0",
+      "predicted_class": "Bearing_Failure",
+      "confidence": 0.7387608
+    },
+    {
+      "sample_id": "holdout_row_1",
+      "predicted_class": "Blocked_Rotor",
+      "confidence": 0.5802854
+    },
+    {
+      "sample_id": "holdout_row_2",
+      "predicted_class": "Lack_of_Phase",
+      "confidence": 0.7551909
+    },
+    {
+      "sample_id": "holdout_row_3",
+      "predicted_class": "Normal Operation",
+      "confidence": 0.8029629
+    },
+    {
+      "sample_id": "holdout_row_4",
+      "predicted_class": "Overheating",
+      "confidence": 0.79239434
+    },
+    {
+      "sample_id": "holdout_row_5",
+      "predicted_class": "Ventilation_Defect",
+      "confidence": 0.89369124
+    }
+  ]
+}
