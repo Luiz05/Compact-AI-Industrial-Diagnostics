@@ -72,7 +72,7 @@ The diagnostic framework considers six operating conditions:
 ## Repository Structure
 
 ```text
-Compact_AI_Industrial_Diagnostic/
+Compact-AI-Industrial-Diagnostics/
 |
 |-- README.md
 |-- LICENSE
