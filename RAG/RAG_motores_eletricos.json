@@ -1,0 +1,678 @@
+{
+  "document": {
+    "title": "Structured Knowledge Base for RAG-Based Diagnosis and Maintenance of Electric Motor Failures",
+    "application": "Predictive and prescriptive maintenance using Retrieval-Augmented Generation (RAG)",
+    "version": "2.0_enriched",
+    "language": "en",
+    "scope": {
+      "equipment": "Three-phase induction motors",
+      "diagnostic_modalities": [
+        "Infrared thermography",
+        "Electrical current monitoring",
+        "Vibration/noise inspection",
+        "Visual/mechanical inspection"
+      ],
+      "intended_use": "Support CNN-to-RAG-to-LLM diagnostic pipelines by grounding generated reports in structured technical knowledge."
+    },
+    "knowledge_schema": {
+      "type": "Fault class recognized by the diagnostic model",
+      "aliases": "Alternative terms used in manuals, standards, and maintenance practice",
+      "description": "Technical definition of the failure condition",
+      "physical_mechanism": "Explanation of how the fault evolves physically/electrically",
+      "root_causes": "Probable causes to be investigated",
+      "observable_evidence": "Expected field evidence from thermal, electrical, mechanical, and operational inspection",
+      "system_effects": "Consequences for performance, reliability, safety, and lifetime",
+      "maintenance_actions": "Prescriptive actions recommended for maintenance teams",
+      "diagnostic_checks": "Suggested verification steps before final maintenance decision",
+      "risk_level": "Qualitative criticality for maintenance prioritization",
+      "standards_and_guidelines": "Normative or manufacturer references used for grounding",
+      "rag_retrieval_notes": "Terms and reasoning cues that improve semantic retrieval"
+    },
+    "failures": [
+      {
+        "type": "Overheating",
+        "aliases": [
+          "thermal overload",
+          "excessive temperature rise",
+          "abnormal heating",
+          "temperature rise",
+          "hot motor"
+        ],
+        "description": "Overheating represents an abnormal thermal condition in which the motor operates above its expected thermal behavior for the applied load, ambient condition, duty cycle, and cooling configuration. In induction motors, this condition is critical because temperature rise is directly associated with accelerated insulation aging, winding degradation, reduction of dielectric strength, and increased probability of premature failure.",
+        "physical_mechanism": "The fault is usually produced by an imbalance between heat generation and heat dissipation. Heat generation may increase due to overload, voltage imbalance, repeated starting, high current, winding defects, poor power quality, or mechanical friction. Heat dissipation may decrease due to obstructed ventilation, dirty cooling channels, damaged fans, high ambient temperature, or inappropriate installation clearance. When the thermal balance is lost, winding temperature increases and may propagate to bearings, frame, terminal box, and adjacent mechanical components.",
+        "root_causes": [
+          "Operation above rated load or service factor",
+          "Restricted airflow or blocked ventilation ducts",
+          "Fan damage, fan obstruction, or ineffective cooling",
+          "Frequent start-stop cycles or excessive starting current",
+          "Voltage imbalance, undervoltage, overvoltage, or unstable supply",
+          "High ambient temperature or inadequate installation clearance",
+          "Winding insulation degradation or partial short-circuit",
+          "Mechanical friction caused by bearing degradation or misalignment"
+        ],
+        "observable_evidence": {
+          "thermal": [
+            "Global increase in frame temperature",
+            "Localized hot spots near windings, terminal box, bearing housing, or cooling path",
+            "Progressive temperature rise during operation"
+          ],
+          "electrical": [
+            "Current above rated value",
+            "Phase current imbalance",
+            "Thermal protection or overload relay tripping"
+          ],
+          "mechanical": [
+            "Abnormal bearing noise when overheating is caused by friction",
+            "Reduced speed or torque under load"
+          ],
+          "operational": [
+            "Reduced performance",
+            "Frequent shutdowns",
+            "Smell of heated insulation in severe cases"
+          ]
+        },
+        "system_effects": [
+          "Accelerated insulation aging",
+          "Reduced dielectric strength of winding insulation",
+          "Increased winding resistance and losses",
+          "Shortened motor service life",
+          "Higher probability of winding burnout",
+          "Possible activation of thermal or overload protection devices"
+        ],
+        "maintenance_actions": [
+          "Compare operating current with nameplate values under the same load condition",
+          "Inspect ventilation paths, fan, air inlets, and external cooling surfaces",
+          "Clean dust, oil, and contaminants from the motor housing and cooling channels",
+          "Check load condition and verify whether the driven machine is overloaded or mechanically restricted",
+          "Measure phase voltages and currents to identify imbalance or abnormal supply conditions",
+          "Verify thermal protection settings and sensor operation",
+          "Inspect winding insulation condition when overheating is recurrent or severe"
+        ],
+        "diagnostic_checks": [
+          "Measure temperature trend under steady load",
+          "Compare current in all three phases",
+          "Inspect airflow direction and fan operation",
+          "Check insulation resistance if overheating persists after cleaning and load correction",
+          "Correlate thermal image with bearing and winding locations"
+        ],
+        "risk_level": "High",
+        "standards_and_guidelines": [
+          {
+            "code": "IEC 60034-1",
+            "relevance": "Provides rating, performance, and temperature-rise principles for rotating electrical machines."
+          },
+          {
+            "code": "NBR 17094",
+            "relevance": "Used as a complementary Brazilian reference for induction motor performance and thermal behavior."
+          },
+          {
+            "source": "WEG winding damage brochure",
+            "relevance": "Supports the relationship between thermal stress, winding degradation, and common motor damage patterns."
+          },
+          {
+            "source": "WEG/Siemens operation and maintenance manuals",
+            "relevance": "Support inspection of ventilation, load, cleanliness, bearing condition, and operating environment."
+          }
+        ],
+        "rag_retrieval_notes": {
+          "semantic_keywords": [
+            "overheating",
+            "temperature rise",
+            "thermal overload",
+            "insulation life",
+            "load",
+            "ventilation",
+            "cooling",
+            "thermal protection"
+          ],
+          "reasoning_cues": [
+            "If the CNN indicates overheating, retrieve entries that connect thermal rise to load, ventilation, power quality, and insulation degradation."
+          ]
+        }
+      },
+      {
+        "type": "Ventilation Defect",
+        "aliases": [
+          "lack of ventilation",
+          "blocked airflow",
+          "fan failure",
+          "cooling failure",
+          "restricted air passage",
+          "ventilation issue"
+        ],
+        "description": "A ventilation defect occurs when the motor cooling system cannot remove the heat generated during operation. This may be caused by fan failure, obstruction of air passages, dust accumulation, restricted installation clearance, or inappropriate cooling configuration. Although it often appears as overheating in thermographic images, its causal mechanism is specifically associated with ineffective heat dissipation.",
+        "physical_mechanism": "Induction motors depend on internal and/or external air circulation to transfer heat from windings, rotor, stator core, and housing to the surrounding environment. When air inlets, exhaust paths, cooling ribs, rotor ducts, or fans are blocked or degraded, heat accumulates even if the electrical load is within nominal limits. The resulting thermal pattern may show progressive heating around the frame and regions close to the cooling path.",
+        "root_causes": [
+          "Dust or contamination blocking air intake/exhaust",
+          "Damaged, loose, or broken cooling fan",
+          "Incorrect motor installation with insufficient clearance",
+          "Obstructed cooling fins or external housing contamination",
+          "Foreign material inside ventilation channels",
+          "Operation in a high-temperature or poorly ventilated environment",
+          "Incorrect cooling method for the application"
+        ],
+        "observable_evidence": {
+          "thermal": [
+            "Temperature rise distributed over the frame",
+            "Hot regions near air outlet or blocked cooling path",
+            "Thermal gradient inconsistent with normal airflow"
+          ],
+          "electrical": [
+            "Current may remain near nominal when load is not the primary cause",
+            "Overload relay may trip after thermal accumulation"
+          ],
+          "mechanical": [
+            "Abnormal fan noise or absence of airflow",
+            "Contamination around fan cover or cooling ducts"
+          ],
+          "operational": [
+            "Motor heats faster than expected after cleaning/load changes",
+            "Temperature decreases after airflow restoration"
+          ]
+        },
+        "system_effects": [
+          "Inefficient heat dissipation",
+          "Thermal stress on winding insulation",
+          "Accelerated aging of insulation materials",
+          "Reduced bearing lubricant life due to elevated temperature",
+          "Increased risk of secondary overheating faults"
+        ],
+        "maintenance_actions": [
+          "Clean air inlets, exhaust openings, fan cover, cooling fins, and accessible ducts",
+          "Inspect fan integrity, fixation, direction, and rotation",
+          "Verify installation clearance around the motor",
+          "Remove dust, oil, and contaminants from the housing",
+          "Confirm whether the cooling method is compatible with the motor design and application",
+          "Monitor post-cleaning temperature trend to verify recovery"
+        ],
+        "diagnostic_checks": [
+          "Compare temperature before and after cleaning ventilation paths",
+          "Verify airflow with motor operating under safe conditions",
+          "Inspect fan cover and cooling ribs visually",
+          "Check whether thermal anomaly persists under reduced load",
+          "Distinguish ventilation defect from overload by combining thermal and current evidence"
+        ],
+        "risk_level": "Medium to High",
+        "standards_and_guidelines": [
+          {
+            "code": "IEC 60034-6",
+            "relevance": "Defines cooling methods and classification for rotating electrical machines."
+          },
+          {
+            "source": "WEG/Siemens operation and maintenance manuals",
+            "relevance": "Support recommendations for keeping air passages clean and avoiding restricted ventilation."
+          }
+        ],
+        "rag_retrieval_notes": {
+          "semantic_keywords": [
+            "ventilation defect",
+            "lack of ventilation",
+            "blocked airflow",
+            "fan failure",
+            "cooling method",
+            "air inlet",
+            "air passage",
+            "thermal dissipation"
+          ],
+          "reasoning_cues": [
+            "When CNN predicts ventilation defect, prioritize documents that separate heat generation from heat dissipation and recommend cleaning/airflow verification."
+          ]
+        }
+      },
+      {
+        "type": "Phase Loss",
+        "aliases": [
+          "lack of phase",
+          "phase failure",
+          "missing phase",
+          "open phase condition",
+          "single phasing",
+          "phase interruption"
+        ],
+        "description": "Phase loss is an electrical supply fault in which one phase of a three-phase motor supply is interrupted or becomes unavailable. The motor may continue operating under abnormal conditions, but current redistribution in the remaining phases produces imbalance, torque reduction, vibration, and rapid thermal stress.",
+        "physical_mechanism": "When one supply phase is lost, the rotating magnetic field becomes unbalanced. The remaining phases can draw excessive current while torque capability decreases. This condition increases copper losses, produces pulsating torque, raises winding temperature, and may lead to protective shutdown or winding damage if not interrupted quickly.",
+        "root_causes": [
+          "Blown fuse or tripped breaker in one phase",
+          "Loose, oxidized, or broken terminal connection",
+          "Contactor pole failure or mechanical wear",
+          "Cable rupture or poor crimping",
+          "Protection device misadjustment",
+          "Power supply instability or upstream distribution fault"
+        ],
+        "observable_evidence": {
+          "thermal": [
+            "Asymmetric heating pattern in windings or terminal region",
+            "Temperature rise associated with current imbalance"
+          ],
+          "electrical": [
+            "Missing voltage in one phase",
+            "Unbalanced phase currents",
+            "Increased current in remaining phases",
+            "Phase-failure relay activation when installed"
+          ],
+          "mechanical": [
+            "Torque pulsation",
+            "Increased vibration",
+            "Difficulty starting or reduced torque"
+          ],
+          "operational": [
+            "Motor hums, heats, trips, or fails to start under load"
+          ]
+        },
+        "system_effects": [
+          "Reduced torque and unstable operation",
+          "Excessive current in remaining phases",
+          "Winding overheating",
+          "Mechanical stress on rotor and coupling",
+          "Protection device tripping",
+          "Potential winding burnout under prolonged operation"
+        ],
+        "maintenance_actions": [
+          "Measure line-to-line voltages and phase currents",
+          "Inspect fuses, circuit breakers, contactors, terminals, and cable connections",
+          "Install or verify phase-failure and phase-sequence protection relays",
+          "Tighten terminals according to manufacturer recommendations",
+          "Investigate upstream power quality and distribution faults",
+          "Do not restart the motor until the missing phase cause is removed"
+        ],
+        "diagnostic_checks": [
+          "Confirm voltage presence in all phases",
+          "Compare current imbalance under no-load and loaded conditions",
+          "Inspect contactor contacts for wear or one-pole failure",
+          "Check thermal image for asymmetric heating",
+          "Verify protection relay operation"
+        ],
+        "risk_level": "High",
+        "standards_and_guidelines": [
+          {
+            "code": "IEC 60204-1",
+            "relevance": "Provides safety requirements for electrical equipment of machines, including protective and control considerations."
+          },
+          {
+            "source": "WEG/Siemens operation and maintenance manuals",
+            "relevance": "Support inspection of terminals, supply conditions, and safe isolation before electrical maintenance."
+          }
+        ],
+        "rag_retrieval_notes": {
+          "semantic_keywords": [
+            "phase loss",
+            "lack of phase",
+            "single phasing",
+            "missing phase",
+            "current imbalance",
+            "voltage imbalance",
+            "contactor",
+            "phase relay"
+          ],
+          "reasoning_cues": [
+            "Retrieve electrical-safety and current-imbalance content when the classifier indicates lack of phase."
+          ]
+        }
+      },
+      {
+        "type": "Blocked Rotor",
+        "aliases": [
+          "locked rotor",
+          "rotor blocked",
+          "jammed shaft",
+          "motor stuck",
+          "mechanical locking",
+          "shaft obstruction"
+        ],
+        "description": "Blocked rotor is a severe condition in which the rotor or driven shaft cannot rotate freely because of mechanical obstruction, bearing seizure, load jamming, coupling misalignment, or internal interference. It is characterized by very high starting current, absence or reduction of rotation, and rapid thermal rise.",
+        "physical_mechanism": "During a locked-rotor event, the motor behaves similarly to a stalled electromagnetic system. Because rotation is prevented, back electromotive force is not properly established and the current remains high. The resulting Joule losses in stator windings can cause rapid overheating. Mechanical stress may also be transferred to bearings, shaft, coupling, and driven equipment.",
+        "root_causes": [
+          "Bearing seizure or severe bearing degradation",
+          "Mechanical obstruction in the driven load",
+          "Coupling misalignment or coupling locking",
+          "Rotor-stator rubbing",
+          "Foreign object inside fan, shaft, or driven mechanism",
+          "Excessive load torque at startup",
+          "Incorrect assembly after maintenance"
+        ],
+        "observable_evidence": {
+          "thermal": [
+            "Rapid temperature increase shortly after energization",
+            "Localized heating near windings or bearing region depending on cause"
+          ],
+          "electrical": [
+            "Very high starting current",
+            "Protection trip by thermal or magnetic device",
+            "Motor fails to reach rated speed"
+          ],
+          "mechanical": [
+            "Shaft does not rotate or rotates with difficulty",
+            "Abnormal noise, scraping, or sudden locking",
+            "High mechanical resistance when manually inspected after safe isolation"
+          ],
+          "operational": [
+            "Immediate shutdown",
+            "Burning smell if energization is prolonged"
+          ]
+        },
+        "system_effects": [
+          "Winding thermal overload",
+          "Possible winding burnout",
+          "Damage to bearings, shaft, coupling, or driven load",
+          "Activation of magnetic or thermal protection",
+          "High safety risk during repeated starts"
+        ],
+        "maintenance_actions": [
+          "De-energize and lock out the equipment before mechanical inspection",
+          "Check whether shaft rotates freely by hand when safe and decoupled",
+          "Inspect bearings, coupling, fan, and driven machine for obstruction",
+          "Measure winding continuity and insulation resistance after severe event",
+          "Verify protection device coordination and trip history",
+          "Avoid repeated starting attempts until the mechanical cause is corrected"
+        ],
+        "diagnostic_checks": [
+          "Compare starting current with expected locked-rotor behavior",
+          "Inspect mechanical coupling and driven load",
+          "Check bearings for seizure or excessive friction",
+          "Verify whether rotor rub marks or foreign objects are present",
+          "Confirm that protection operated correctly"
+        ],
+        "risk_level": "Critical",
+        "standards_and_guidelines": [
+          {
+            "code": "IEC 60034-1",
+            "relevance": "Provides motor rating/performance context relevant to abnormal starting and thermal limits."
+          },
+          {
+            "source": "WEG/Siemens operation and maintenance manuals",
+            "relevance": "Support safe inspection, bearing checks, coupling verification, and avoidance of repeated starts under abnormal mechanical conditions."
+          }
+        ],
+        "rag_retrieval_notes": {
+          "semantic_keywords": [
+            "blocked rotor",
+            "locked rotor",
+            "jammed shaft",
+            "high starting current",
+            "bearing seizure",
+            "coupling misalignment",
+            "mechanical obstruction"
+          ],
+          "reasoning_cues": [
+            "For blocked rotor, retrieve both electrical protection and mechanical obstruction content."
+          ]
+        }
+      },
+      {
+        "type": "Bearing Failure",
+        "aliases": [
+          "bearing wear",
+          "bearing damage",
+          "bearing noise",
+          "bearing overheating",
+          "lubrication failure",
+          "rolling element fault"
+        ],
+        "description": "Bearing failure is a mechanical degradation condition associated with wear, contamination, lubrication deficiency, misalignment, overloading, electrical discharge, or fatigue. In induction motors, bearing faults are critical because they increase friction, vibration, acoustic noise, and localized heat near the bearing housing, potentially leading to rotor misalignment and secondary electrical or thermal faults.",
+        "physical_mechanism": "Bearing degradation increases rolling or sliding friction and produces vibration signatures that evolve from incipient defects to severe mechanical damage. Poor lubrication or contamination accelerates surface wear and increases temperature. As bearing clearance or damage progresses, shaft alignment may deteriorate, causing rotor eccentricity, additional losses, and possible contact between rotating and stationary parts.",
+        "root_causes": [
+          "Insufficient or degraded lubricant",
+          "Excessive lubrication causing heating or contamination retention",
+          "Ingress of dust, moisture, or chemical contaminants",
+          "Misalignment between motor and driven load",
+          "Excessive radial or axial load",
+          "Fatigue from long service life",
+          "Improper mounting or handling during maintenance",
+          "Electrical bearing currents in specific drive applications"
+        ],
+        "observable_evidence": {
+          "thermal": [
+            "Localized hot spot at drive-end or non-drive-end bearing housing",
+            "Temperature asymmetry between bearings",
+            "Temperature increase correlated with vibration/noise"
+          ],
+          "electrical": [
+            "Current may increase slightly due to mechanical load/friction",
+            "Variable-frequency drive applications may show bearing-current related damage"
+          ],
+          "mechanical": [
+            "Metallic noise",
+            "Increased vibration",
+            "Rough shaft rotation",
+            "Excessive axial/radial play"
+          ],
+          "operational": [
+            "Reduced mechanical efficiency",
+            "Progressive increase in noise and temperature",
+            "Potential shutdown due to vibration or thermal protection"
+          ]
+        },
+        "system_effects": [
+          "Reduced mechanical efficiency",
+          "Shaft misalignment",
+          "Rotor eccentricity",
+          "Increased vibration transmitted to the foundation",
+          "Possible rotor/stator contact in severe cases",
+          "Secondary overheating and lubricant degradation",
+          "Unexpected downtime"
+        ],
+        "maintenance_actions": [
+          "Inspect bearing temperature, vibration, and acoustic behavior",
+          "Lubricate according to manufacturer interval, grease type, and quantity",
+          "Avoid overgreasing and contamination during lubrication",
+          "Inspect seals and shields against ingress of dust/moisture",
+          "Check alignment between motor and driven equipment",
+          "Replace worn bearings before catastrophic failure",
+          "Record bearing temperature and vibration trends after intervention"
+        ],
+        "diagnostic_checks": [
+          "Compare drive-end and non-drive-end bearing temperatures",
+          "Evaluate vibration severity and trend over time",
+          "Inspect lubricant condition and maintenance history",
+          "Check shaft/coupling alignment",
+          "Confirm whether heating remains after load and ventilation correction"
+        ],
+        "risk_level": "Medium to High",
+        "standards_and_guidelines": [
+          {
+            "code": "ISO 10816 / ISO 20816 family",
+            "relevance": "Used for vibration severity evaluation of rotating machinery, depending on equipment class and current standard adoption."
+          },
+          {
+            "source": "WEG/Siemens operation and maintenance manuals",
+            "relevance": "Support bearing lubrication, replacement, inspection, and contamination prevention procedures."
+          }
+        ],
+        "rag_retrieval_notes": {
+          "semantic_keywords": [
+            "bearing failure",
+            "bearing wear",
+            "lubrication",
+            "vibration",
+            "bearing temperature",
+            "noise",
+            "misalignment",
+            "contamination"
+          ],
+          "reasoning_cues": [
+            "For bearing failure, retrieve mechanical evidence, lubrication procedures, vibration interpretation, and thermal localization near bearing housing."
+          ]
+        }
+      },
+      {
+        "type": "Normal Operation",
+        "aliases": [
+          "normal",
+          "healthy condition",
+          "nominal operation",
+          "steady state",
+          "reference condition"
+        ],
+        "description": "Normal operation corresponds to a condition in which the motor operates within expected electrical, thermal, mechanical, and environmental limits. No abnormal heating pattern, excessive vibration, phase imbalance, or mechanical restriction is detected. This class is important as a baseline for comparison against fault conditions.",
+        "physical_mechanism": "In normal operation, heat generated by copper losses, iron losses, mechanical friction, and stray losses is balanced by the cooling system and the surrounding environment. Phase currents remain balanced, vibration and noise remain stable, and thermal distribution is compatible with motor construction, load, duty cycle, and cooling method.",
+        "root_causes": [
+          "No failure mechanism detected",
+          "Operation within rated load and environmental limits",
+          "Adequate cooling and ventilation",
+          "Stable three-phase power supply",
+          "Acceptable bearing and lubrication condition"
+        ],
+        "observable_evidence": {
+          "thermal": [
+            "Stable frame temperature",
+            "No abnormal localized hot spot",
+            "Thermal pattern compatible with load and cooling path"
+          ],
+          "electrical": [
+            "Balanced phase currents",
+            "Voltage within acceptable operating range",
+            "No recurrent protective trips"
+          ],
+          "mechanical": [
+            "Constant noise level",
+            "No abnormal vibration",
+            "Smooth shaft rotation"
+          ],
+          "operational": [
+            "Stable performance",
+            "No reduction in torque or speed",
+            "Routine operation without alarms"
+          ]
+        },
+        "system_effects": [
+          "Expected service life when preventive maintenance is maintained",
+          "Stable efficiency and reliability",
+          "Low immediate risk of failure"
+        ],
+        "maintenance_actions": [
+          "Continue scheduled preventive maintenance",
+          "Monitor temperature, current, and vibration trends",
+          "Maintain ventilation cleanliness",
+          "Periodically tighten electrical connections following safe procedures",
+          "Lubricate bearings according to manufacturer recommendations",
+          "Use the normal pattern as baseline for anomaly detection"
+        ],
+        "diagnostic_checks": [
+          "Compare current operation with historical baseline",
+          "Confirm absence of thermal hotspots",
+          "Check phase-current balance",
+          "Verify routine maintenance records",
+          "Inspect for early deviations in trend data"
+        ],
+        "risk_level": "Low",
+        "standards_and_guidelines": [
+          {
+            "code": "IEC 60034-1",
+            "relevance": "Provides motor rating and performance context for nominal operation."
+          },
+          {
+            "source": "WEG/Siemens operation and maintenance manuals",
+            "relevance": "Support preventive inspection routines, cleaning, lubrication, and safe operation practices."
+          }
+        ],
+        "rag_retrieval_notes": {
+          "semantic_keywords": [
+            "normal operation",
+            "nominal",
+            "baseline",
+            "steady state",
+            "stable current",
+            "stable temperature",
+            "preventive maintenance"
+          ],
+          "reasoning_cues": [
+            "For normal class, retrieve baseline and preventive maintenance content rather than fault-correction procedures."
+          ]
+        }
+      }
+    ],
+    "retrieval_configuration": {
+      "recommended_chunking": "Index each fault entry as one main document and optionally index subdocuments for physical mechanism, observable evidence, maintenance actions, and standards.",
+      "recommended_metadata_fields": [
+        "type",
+        "aliases",
+        "risk_level",
+        "standards_and_guidelines.code",
+        "diagnostic_modalities"
+      ],
+      "recommended_top_k": "3 to 5 depending on knowledge base size; use reranking when expanding to manuals and standards.",
+      "query_template": "Fault: {predicted_class}; confidence: {confidence}; observed evidence: {thermal/electrical/mechanical evidence if available}; retrieve causes, symptoms, risks, actions, and standards.",
+      "generation_instruction": "Use only retrieved context. Distinguish observed evidence from inferred causes. Mention standards only as references/guidelines, not as direct quotations unless authorized."
+    },
+    "source_documents": [
+      {
+        "id": "SRC-WEG-WINDING-DAMAGE-50009255",
+        "title": "WEG - Motor Winding Damage brochure",
+        "use": "Winding damage mechanisms, thermal stress, insulation degradation, fault interpretation"
+      },
+      {
+        "id": "SRC-WEG-IOM-50033244",
+        "title": "WEG - Installation, Operation and Maintenance Manual of Electric Motors",
+        "use": "Installation, operation, cleaning, lubrication, inspection, and maintenance practices"
+      },
+      {
+        "id": "SRC-SIEMENS-OM-IE-71-132",
+        "title": "Siemens - Operation and Maintenance Manual for IE Motors - Frame size 71-132",
+        "use": "Operation, maintenance, inspection, lubrication, safety, and fault-related procedures"
+      },
+      {
+        "id": "SRC-SIEMENS-FAULT",
+        "title": "Siemens fault reference material",
+        "use": "Fault symptoms and troubleshooting support"
+      },
+      {
+        "id": "STD-IEC-60034-1",
+        "title": "IEC 60034-1",
+        "use": "Rating and performance principles for rotating electrical machines"
+      },
+      {
+        "id": "STD-IEC-60034-6",
+        "title": "IEC 60034-6",
+        "use": "Cooling methods and classification for rotating electrical machines"
+      },
+      {
+        "id": "STD-IEC-60204-1",
+        "title": "IEC 60204-1",
+        "use": "Electrical equipment safety requirements for machines"
+      },
+      {
+        "id": "STD-ISO-10816-20816",
+        "title": "ISO 10816 / ISO 20816 family",
+        "use": "Vibration evaluation guidance for rotating machinery"
+      }
+    ],
+    "summary_table": [
+      {
+        "fault": "Overheating",
+        "risk_level": "High",
+        "main_evidence": "Global increase in frame temperature; Localized hot spots near windings, terminal box, bearing housing, or cooling path",
+        "primary_action": "Compare operating current with nameplate values under the same load condition"
+      },
+      {
+        "fault": "Ventilation Defect",
+        "risk_level": "Medium to High",
+        "main_evidence": "Temperature rise distributed over the frame; Hot regions near air outlet or blocked cooling path",
+        "primary_action": "Clean air inlets, exhaust openings, fan cover, cooling fins, and accessible ducts"
+      },
+      {
+        "fault": "Phase Loss",
+        "risk_level": "High",
+        "main_evidence": "Asymmetric heating pattern in windings or terminal region; Temperature rise associated with current imbalance",
+        "primary_action": "Measure line-to-line voltages and phase currents"
+      },
+      {
+        "fault": "Blocked Rotor",
+        "risk_level": "Critical",
+        "main_evidence": "Rapid temperature increase shortly after energization; Localized heating near windings or bearing region depending on cause",
+        "primary_action": "De-energize and lock out the equipment before mechanical inspection"
+      },
+      {
+        "fault": "Bearing Failure",
+        "risk_level": "Medium to High",
+        "main_evidence": "Localized hot spot at drive-end or non-drive-end bearing housing; Temperature asymmetry between bearings",
+        "primary_action": "Inspect bearing temperature, vibration, and acoustic behavior"
+      },
+      {
+        "fault": "Normal Operation",
+        "risk_level": "Low",
+        "main_evidence": "Stable frame temperature; No abnormal localized hot spot",
+        "primary_action": "Continue scheduled preventive maintenance"
+      }
+    ]
+  }
+}
